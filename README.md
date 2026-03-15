@@ -38,7 +38,7 @@ python main.py
 # 3-qubit mixed state with depolarising noise
 python main.py --n-qubits 3 --noise-prob 0.15 --noise-type depolarising
 
-# Supply your own target density matrix
+# Supply your own target density matrix (if you don't, random target state will be used !)
 python main.py --rho-file my_target.npy
 
 # Save all plots
