@@ -60,7 +60,7 @@ All components are implemented as exact unitary matrices acting on polarisation-
 
 Applies a controlled phase advance to the vertical polarisation component while leaving horizontal unchanged:
 
-$$\text{PS}(\phi) = \begin{pmatrix} 1 & 0 \\ 0 & e^{i\phi} \end{pmatrix}, \quad \phi \in [0, 2\pi)$$
+$$\text{PS}(\phi) = \begin{matrix} 1 & 0 \\ 0 & e^{i\phi} \end{matrix}, \quad \phi \in [0, 2\pi)$$
 
 Physically realised as a birefringent crystal or electro-optic modulator. The parameter $\phi$ is optimised continuously by the GA.
 
@@ -68,7 +68,7 @@ Physically realised as a birefringent crystal or electro-optic modulator. The pa
 
 Introduces $\pi$ radians of retardation. Rotates the polarisation state by twice the fast-axis angle $\theta$:
 
-$$\text{HWP}(\theta) = \begin{pmatrix} \cos 2\theta & \sin 2\theta \\ \sin 2\theta & -\cos 2\theta \end{pmatrix}, \quad \theta \in [0, \pi/2)$$
+$$\text{HWP}(\theta) = \begin{matrix}\cos 2\theta & \sin 2\theta \\ \sin 2\theta & -\cos 2\theta \end{matrix}, \quad \theta \in [0, \pi/2)$$
 
 At $\theta = 45°$ this acts as a Pauli-X (bit-flip): $|H\rangle \leftrightarrow |V\rangle$. At $\theta = 22.5°$ it produces the Hadamard transformation.
 
