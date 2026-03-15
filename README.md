@@ -60,7 +60,12 @@ All components are implemented as exact unitary matrices acting on polarisation-
 
 Applies a controlled phase advance to the vertical polarisation component while leaving horizontal unchanged:
 
-$$\text{PS}(\phi) = \begin{matrix} 1 & 0 \\ 0 & e^{i\phi} \end{matrix}, \quad \phi \in [0, 2\pi)$$
+$$
+\text{PS}(\phi) = \begin{bmatrix}
+1 & 0 \\
+0 & e^{i\phi} \\
+\end{bmatrix}, \quad \phi \in [0, 2\pi)
+$$
 
 Physically realised as a birefringent crystal or electro-optic modulator. The parameter $\phi$ is optimised continuously by the GA.
 
@@ -68,7 +73,12 @@ Physically realised as a birefringent crystal or electro-optic modulator. The pa
 
 Introduces $\pi$ radians of retardation. Rotates the polarisation state by twice the fast-axis angle $\theta$:
 
-$$\text{HWP}(\theta) = \begin{matrix}\cos 2\theta & \sin 2\theta \\ \sin 2\theta & -\cos 2\theta \end{matrix}, \quad \theta \in [0, \pi/2)$$
+$$
+\text{HWP}(\theta) = \begin{bmatrix}
+\cos 2\theta & \sin 2\theta \\
+\sin 2\theta & -\cos 2\theta 
+\end{bmatrix}, \quad \theta \in [0, \pi/2)
+$$
 
 At $\theta = 45°$ this acts as a Pauli-X (bit-flip): $|H\rangle \leftrightarrow |V\rangle$. At $\theta = 22.5°$ it produces the Hadamard transformation.
 
@@ -76,7 +86,12 @@ At $\theta = 45°$ this acts as a Pauli-X (bit-flip): $|H\rangle \leftrightarrow
 
 Introduces $\pi/2$ retardation, converting between linear and elliptical (or circular) polarisation:
 
-$$\text{QWP}(\theta) = e^{i\pi/4} \begin{pmatrix} \cos^2\theta + i\sin^2\theta & (1-i)\sin\theta\cos\theta \\ (1-i)\sin\theta\cos\theta & \sin^2\theta + i\cos^2\theta \end{pmatrix}, \quad \theta \in [0, \pi/2)$$
+$$
+\text{QWP}(\theta) = e^{i\pi/4} \begin{bmatrix} 
+\cos^2\theta + i\sin^2\theta & (1-i)\sin\theta\cos\theta \\
+(1-i)\sin\theta\cos\theta & \sin^2\theta + i\cos^2\theta 
+\end{bmatrix}, \quad \theta \in [0, \pi/2)
+$$
 
 At $\theta = 45°$: converts horizontal linear polarisation to right-hand circular polarisation ($|H\rangle \to (|H\rangle - i|V\rangle)/\sqrt{2}$).
 
@@ -88,7 +103,13 @@ $$U(\alpha, \beta, \gamma) = R_z(\alpha)\, R_y(\beta)\, R_z(\gamma)$$
 
 where
 
-$$R_z(\theta) = \begin{pmatrix} e^{-i\theta/2} & 0 \\ 0 & e^{i\theta/2} \end{pmatrix}, \qquad R_y(\theta) = \begin{pmatrix} \cos(\theta/2) & -\sin(\theta/2) \\ \sin(\theta/2) & \cos(\theta/2) \end{pmatrix}$$
+$$
+R_z(\theta) = \begin{bmatrix} 
+e^{-i\theta/2} & 0 \\ 
+0 & e^{i\theta/2} \end{bmatrix}, \qquad 
+R_y(\theta) = \begin{bmatrix} \cos(\theta/2) & -\sin(\theta/2) \\
+\sin(\theta/2) & \cos(\theta/2) \end{bmatrix}
+$$
 
 Parameters: $\alpha \in [0, 2\pi)$, $\beta \in [0, \pi)$, $\gamma \in [0, 2\pi)$.
 
@@ -100,7 +121,14 @@ All two-qubit gates act on ordered pairs of qubits and are embedded into the ful
 
 The key element of linear-optic quantum computing. Implements Hong-Ou-Mandel interference when both input ports are simultaneously occupied by indistinguishable photons:
 
-$$\text{BS} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 0 & 0 & i \\ 0 & 1 & i & 0 \\ 0 & i & 1 & 0 \\ i & 0 & 0 & 1 \end{pmatrix}$$
+$$
+\text{BS} = \frac{1}{\sqrt{2}} \begin{bmatrix} 
+1 & 0 & 0 & i \\ 
+0 & 1 & i & 0 \\ 
+0 & i & 1 & 0 \\
+i & 0 & 0 & 1 
+\end{bmatrix}
+$$
 
 Transmission amplitude $1/\sqrt{2}$; reflection amplitude $i/\sqrt{2}$ (the extra $i$ phase is physical — it comes from the phase shift on reflection at the denser medium). No free parameters; entirely fixed by physics.
 
@@ -108,7 +136,13 @@ Transmission amplitude $1/\sqrt{2}$; reflection amplitude $i/\sqrt{2}$ (the extr
 
 Transmits horizontal photons ($|H\rangle$) and reflects vertical photons ($|V\rangle$). Acts as a partial SWAP on the polarisation degree of freedom across two spatial modes:
 
-$$\text{PBS} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}$$
+$$\text{PBS} = \begin{bmatrix} 
+1 & 0 & 0 & 0 \\ 
+0 & 0 & 1 & 0 \\ 
+0 & 1 & 0 & 0 \\ 
+0 & 0 & 0 & 1 
+\end{bmatrix}
+$$
 
 The cornerstone of linear-optic Bell-state measurement and entanglement-swapping protocols.
 
@@ -116,7 +150,14 @@ The cornerstone of linear-optic Bell-state measurement and entanglement-swapping
 
 Flips the target qubit if and only if the control is $|1\rangle$ (vertically polarised):
 
-$$\text{CNOT} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix}$$
+$$
+\text{CNOT} = \begin{bmatrix} 
+1 & 0 & 0 & 0 \\ 
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\ 
+0 & 0 & 1 & 0 
+\end{bmatrix}
+$$
 
 In linear optics, CNOT requires ancilla photons and KLM-style post-selection. Treated here as an ideal unitary; the post-selection overhead is absorbed into the heralding layer.
 
@@ -130,7 +171,14 @@ $$\text{CZ} = \text{diag}(1, 1, 1, -1)$$
 
 Exchanges the complete quantum states of two modes: $|ab\rangle \mapsto |ba\rangle$. Perfectly reversible, implementable physically as a crossed optical path or as three CNOT gates:
 
-$$\text{SWAP} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}$$
+$$
+\text{SWAP} = \begin{bmatrix} 
+1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 \\ 
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+$$
 
 ### SPDC Sources and Scaffolding
 
