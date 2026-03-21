@@ -218,7 +218,15 @@ def main():
         seed                = args.ga_seed,
         verbose             = True,
     )
-    ga.evolve()
+    ga.fidelity_target = args.fidelity_target
+
+    print("\n  [Tip] Press Ctrl+C at any time to stop evolving and plot results.\n")
+
+    try:
+        ga.evolve()
+    except KeyboardInterrupt:
+        print("\n\n  [Interrupted] User pressed Ctrl+C! Halting evolution early...")
+
     ga.print_report()
 
     # ── Held-out evaluation ───────────────────────────────────────────────
